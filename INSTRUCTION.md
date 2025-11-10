@@ -28,9 +28,23 @@ From the project root (where `docker-compose.yml` is located):
 ```bash
 docker-compose up --build
 
+## 3. Access the Application
 http://localhost:8000
 
+
+# stop containers
 docker-compose down
 
 docker-compose down -v
 
+# Show running containers
+docker-compose ps
+
+# Follow logs from both containers
+docker-compose logs -f
+
+# View only web container logs
+docker-compose logs -f web
+
+# View only database logs
+docker-compose logs -f db
