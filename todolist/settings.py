@@ -60,14 +60,19 @@ WSGI_APPLICATION = "todolist.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+
+# DB host is taken from environment (for Docker / docker-compose).
+# Default value "db" matches the MySQL service name in docker-compose.yml.
+DB_HOST = os.environ.get("DB_HOST", "db")
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'mysql.connector.django',
-        'NAME': 'app_db',
-        'USER': 'app_user',
-        'PASSWORD': '1234',
-        'HOST': '172.17.0.2',  # You can use a different host if your MySQL server is on a remote machine.
-        'PORT': '',  # Leave this empty to use the default MySQL port (3306).
+    "default": {
+        "ENGINE": "mysql.connector.django",
+        "NAME": "app_db",
+        "USER": "app_user",
+        "PASSWORD": "1234",
+        "HOST": DB_HOST,  # taken from DB_HOST env var
+        "PORT": "",       # empty string -> use default MySQL port (3306)
     }
 }
 
@@ -114,8 +119,3 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "django.template.context_processors.request",
-            ],
-            "debug": True,
-        },
-    },
-]
