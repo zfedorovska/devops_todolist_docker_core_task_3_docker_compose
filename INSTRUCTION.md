@@ -32,11 +32,16 @@ docker-compose up --build
 http://localhost:8000
 
 
-# stop containers
+## 4. Stop the application
+
+#To stop and remove the containers, run the following command in your terminal:
+
 docker-compose down
 
+#To stop and also remove the volume (deleting all stored data):
 docker-compose down -v
 
+## 5. Viewing Logs
 # Show running containers
 docker-compose ps
 
